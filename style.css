@@ -245,3 +245,28 @@ th{color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
 /* pills get richer depth */
 .pill{box-shadow:0 4px 14px rgba(0,0,0,.3),0 0 14px currentColor}
 }
+
+/* --- intro loader --- */
+.loader-screen{
+  position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  transition:opacity .6s ease,visibility .6s ease}
+.loader-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  font-size:clamp(2rem,8vw,3.6rem);font-weight:900;letter-spacing:4px;color:var(--cyan);
+  text-shadow:0 0 30px rgba(0,229,255,.6);opacity:0;animation:loader-reveal 1.6s ease forwards}
+@keyframes loader-reveal{
+  0%{opacity:0;transform:scale(.8) translateY(10px)}
+  60%{opacity:1;transform:scale(1.05)}
+  100%{opacity:1;transform:scale(1)}
+}
+.loader-sub{
+  font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--dim);
+  opacity:0;animation:loader-fade-in .8s ease forwards .6s}
+@keyframes loader-fade-in{to{opacity:1}}
+
+/* --- scroll progress bar --- */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:10000;
+  background:linear-gradient(90deg,var(--cyan),var(--green));
+  box-shadow:0 0 10px var(--cyan),0 0 4px var(--green)}
