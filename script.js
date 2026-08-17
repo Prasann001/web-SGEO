@@ -112,3 +112,20 @@ function updateScrollRotation() {
 window.addEventListener('scroll', updateScrollRotation, { passive: true });
 window.addEventListener('resize', updateScrollRotation);
 updateScrollRotation();
+
+// --- intro loader ---
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelector('.loader-screen').classList.add('hide');
+  }, 1400);
+});
+
+// --- scroll progress bar ---
+function updateScrollProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.querySelector('.scroll-progress').style.width = pct + '%';
+}
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
+updateScrollProgress();
