@@ -129,3 +129,56 @@ function updateScrollProgress() {
 }
 window.addEventListener('scroll', updateScrollProgress, { passive: true });
 updateScrollProgress();
+
+// --- splash cursor trail ---
+(() => {
+  const canvas = document.getElementById('splashCursor');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const colors = ['#00e5ff', '#00ff9d', '#ffb300'];
+
+  window.addEventListener('mousemove', e => {
+    for (let i = 0; i < 2; i++) {
+      particles.push({
+        x: e.clientX,
+        y: e.clientY,
+        size: Math.random() * 5 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1
+      });
+    }
+  });
+
+  // touch support for mobile
+  window.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    particles.push({ x: t.clientX, y: t.clientY, size: 6, color: colors[Math.floor(Math.random()*colors.length)], life: 1 });
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = p.color;
+      ctx.fill();
+      p.life -= 0.04;
+      p.y -= 0.5;
+    });
+    ctx.globalAlpha = 1;
+    particles = particles.filter(p => p.life > 0);
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
