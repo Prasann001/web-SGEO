@@ -270,3 +270,7 @@ th{color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
   position:fixed;top:0;left:0;height:3px;width:0%;z-index:10000;
   background:linear-gradient(90deg,var(--cyan),var(--green));
   box-shadow:0 0 10px var(--cyan),0 0 4px var(--green)}
+
+/* --- splash cursor trail --- */
+#splashCursor{
+  position:fixed;inset:0;z-index:9998;pointer-events:none;width:100vw;height:100vh}
