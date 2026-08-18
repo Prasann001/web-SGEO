@@ -274,3 +274,21 @@ th{color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
 /* --- splash cursor trail --- */
 #splashCursor{
   position:fixed;inset:0;z-index:9998;pointer-events:none;width:100vw;height:100vh}
+
+/* --- stats counter --- */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin-top:2rem}
+.stat-item{text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.8rem 1rem;transition:.25s}
+.stat-item:hover{border-color:var(--cyan);box-shadow:0 12px 34px rgba(0,229,255,.15);transform:translateY(-4px)}
+.stat-num{font-size:2.4rem;font-weight:900;color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,.5)}
+.stat-label{color:var(--dim);font-size:.85rem;margin-top:.4rem;text-transform:uppercase;letter-spacing:1px}
+
+/* --- copy code button --- */
+.copy-btn{
+  position:absolute;top:1rem;right:1.3rem;background:var(--panel);border:1px solid var(--line);
+  color:var(--dim);font-size:.75rem;padding:.4rem .8rem;border-radius:6px;cursor:pointer;transition:.2s}
+.copy-btn:hover{border-color:var(--green);color:var(--green)}
+.copy-btn.copied{border-color:var(--green);color:var(--green)}
+.code-box{position:relative}
+
+/* --- magnetic CTA button --- */
+.hero-cta{will-change:transform}
