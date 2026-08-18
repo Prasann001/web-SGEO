@@ -167,6 +167,17 @@
   </div>
 </section>
 
+<!-- STATS -->
+<section id="stats" class="section reveal">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="stat-num" data-target="3">0</div><div class="stat-label">Priority Zones</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="500">0</div><div class="stat-label">ms Response Time</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="21">0</div><div class="stat-label">LEDs Total</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Relay Channels</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="2046">0</div><div class="stat-label">Max Power Index</div></div>
+  </div>
+</section>
+
 <!-- CIRCUIT -->
 <section id="circuit" class="section reveal">
   <h2>Circuit &amp; Wiring</h2>
@@ -216,6 +227,11 @@
   <p class="lead">The full sketch (with LDR day/night gating). A baseline variant without the LDR also exists as a fallback. Loop runs every 500&nbsp;ms, prints debug data to Serial, and drives the LCD.</p>
   <details class="code-box">
     <summary>▶ View full sketch — sgeo_with_ldr.ino</summary>
+    <details class="code-box">
+  <summary>▶ View full sketch — sgeo_with_ldr.ino</summary>
+  <button class="copy-btn">📋 Copy</button>
+<pre><code>...(your existing code stays exactly the same)...</code></pre>
+</details>
 <pre><code>#include &lt;LiquidCrystal.h&gt;
 
 LiquidCrystal lcd(2, 3, 4, 5, 6, 7); // RS, E, D4, D5, D6, D7
