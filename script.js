@@ -182,3 +182,50 @@ updateScrollProgress();
   }
   animate();
 })();
+
+// --- stats counter animation ---
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const tick = () => {
+        current += step;
+        if (current >= target) { el.textContent = target; }
+        else { el.textContent = current; requestAnimationFrame(tick); }
+      };
+      tick();
+      statObs.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => statObs.observe(el));
+
+// --- copy code button ---
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const code = btn.closest('.code-box').querySelector('code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+});
+
+// --- magnetic CTA button ---
+const magneticBtn = document.querySelector('.hero-cta');
+if (magneticBtn) {
+  magneticBtn.addEventListener('mousemove', e => {
+    const r = magneticBtn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+    magneticBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+  });
+  magneticBtn.addEventListener('mouseleave', () => {
+    magneticBtn.style.transform = '';
+  });
+}
