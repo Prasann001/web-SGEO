@@ -229,3 +229,24 @@ if (magneticBtn) {
     magneticBtn.style.transform = '';
   });
 }
+
+// --- staggered heading word reveal ---
+document.querySelectorAll('.section h2').forEach(h => {
+  const text = h.textContent;
+  h.innerHTML = text.split(' ').map((w, i) =>
+    `<span class="word" style="transition-delay:${i * 0.08}s">${w}&nbsp;</span>`
+  ).join('');
+});
+
+// --- custom cursor ring ---
+const ring = document.getElementById('cursorRing');
+if (ring) {
+  window.addEventListener('mousemove', e => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .card, .flip-card, .zone, .member-card, input[type=range]').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+  });
+}
