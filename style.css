@@ -292,3 +292,65 @@ th{color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
 
 /* --- magnetic CTA button --- */
 .hero-cta{will-change:transform}
+
+/* --- team section v2 --- */
+.team-group{margin-bottom:3rem}
+.team-group:last-child{margin-bottom:0}
+.team-group-title{
+  font-size:1.1rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.team-group-title::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,currentColor,transparent);opacity:.4}
+.team-group.circuit .team-group-title{color:var(--cyan)}
+.team-group.city .team-group-title{color:var(--green)}
+.team-group.support .team-group-title{color:var(--amber)}
+
+.team-grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
+.member-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.6rem 1.2rem;
+  text-align:center;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.member-card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.08),transparent 70%)}
+.member-card:hover{transform:translateY(-8px)}
+.member-card:hover::before{opacity:1}
+.team-group.circuit .member-card:hover{border-color:var(--cyan);box-shadow:0 16px 40px rgba(0,229,255,.2)}
+.team-group.city .member-card:hover{border-color:var(--green);box-shadow:0 16px 40px rgba(0,255,157,.2)}
+.team-group.support .member-card:hover{border-color:var(--amber);box-shadow:0 16px 40px rgba(255,179,0,.2)}
+
+.member-avatar{
+  font-size:2.6rem;display:inline-block;margin-bottom:.8rem;
+  transition:transform .4s}
+.member-card:hover .member-avatar{transform:scale(1.15) rotate(-6deg)}
+.member-name{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.member-role{
+  display:inline-block;font-size:.72rem;padding:.25rem .7rem;border-radius:999px;
+  border:1px solid;letter-spacing:.5px;text-transform:uppercase}
+.team-group.circuit .member-role{color:var(--cyan);border-color:var(--cyan)}
+.team-group.city .member-role{color:var(--green);border-color:var(--green)}
+.team-group.support .member-role{color:var(--amber);border-color:var(--amber)}
+
+.member-tag{
+  max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .35s ease,margin-top .35s;
+  font-size:.8rem;color:var(--dim);line-height:1.5}
+.member-card:hover .member-tag{max-height:100px;opacity:1;margin-top:.7rem}
+
+/* --- mentor spotlight card --- */
+.mentor-card{
+  background:linear-gradient(135deg,var(--panel),rgba(255,179,0,.06));
+  border:1px solid var(--amber);border-radius:18px;padding:2rem;
+  display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;
+  box-shadow:0 0 30px rgba(255,179,0,.12);position:relative;overflow:hidden}
+.mentor-card::before{
+  content:'';position:absolute;top:-40%;right:-10%;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,179,0,.18),transparent 70%);filter:blur(10px)}
+.mentor-avatar{
+  font-size:3.2rem;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(255,179,0,.5));
+  animation:mentor-float 4s ease-in-out infinite}
+@keyframes mentor-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(4deg)}}
+.mentor-info{position:relative;z-index:1}
+.mentor-badge{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--amber);border:1px solid var(--amber);padding:.25rem .7rem;border-radius:999px;margin-bottom:.5rem}
+.mentor-info h3{font-size:1.3rem;margin-bottom:.3rem}
+.mentor-info p{color:var(--dim);font-size:.9rem;line-height:1.5}
+@media(max-width:600px){.mentor-card{flex-direction:column;text-align:center}}
