@@ -354,3 +354,21 @@ th{color:var(--dim);text-transform:uppercase;font-size:.7rem;letter-spacing:1px}
 .mentor-info h3{font-size:1.3rem;margin-bottom:.3rem}
 .mentor-info p{color:var(--dim);font-size:.9rem;line-height:1.5}
 @media(max-width:600px){.mentor-card{flex-direction:column;text-align:center}}
+
+/* --- staggered heading reveal --- */
+.section h2{overflow:hidden}
+.section h2 .word{display:inline-block;opacity:0;transform:translateY(100%);
+  transition:opacity .5s ease,transform .5s ease}
+.section.visible h2 .word{opacity:1;transform:translateY(0)}
+
+/* --- soft scroll snap (gentle, not aggressive) --- */
+html{scroll-snap-type:y proximity}
+.section, .hero{scroll-snap-align:start}
+
+/* --- custom cursor ring --- */
+#cursorRing{
+  position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--cyan);
+  border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,border-color .2s,background .2s;mix-blend-mode:screen}
+#cursorRing.hovering{width:50px;height:50px;background:rgba(0,229,255,.12);border-color:var(--green)}
+@media(hover:none){#cursorRing{display:none}}
